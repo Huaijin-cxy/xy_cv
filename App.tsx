@@ -68,7 +68,7 @@ const ModularPipelineDiagram = () => {
       description: "Transform vague issues into concrete, well-defined problems",
       color: "bg-indigo-600",
       number: 1,
-      input: "knowledge_base, original response, vague issues",
+      input: "knowledge_base, vague issues",
       output: "concrete issues"
     },
     {
@@ -76,7 +76,7 @@ const ModularPipelineDiagram = () => {
       description: "Check model's response and assess issue severity",
       color: "bg-rose-500",
       number: 2,
-      input: "knowledge_base, concrete issues",
+      input: "knowledge_base, original response, concrete issues",
       output: "issues & severity"
     },
     {
@@ -84,7 +84,7 @@ const ModularPipelineDiagram = () => {
       description: "Propose optimization suggestions based on identified issues",
       color: "bg-amber-500",
       number: 3,
-      input: "knowledge_base, issues & severity",
+      input: "knowledge_base, original response, issues & severity",
       output: "suggestions"
     },
     {
@@ -933,9 +933,12 @@ const ProjectDetailPage = () => {
              {/* LLM Workflow Diagram */}
              {project.id === "llm-performance-sft" && (
                 <div className="border-t border-slate-100 pt-12 animate-in fade-in slide-in-from-top-4 duration-1000">
-                  <h2 className="text-2xl font-bold text-slate-900 mb-4">SFT Data Pipeline Workflow</h2>
+                  <h2 className="text-2xl font-bold text-slate-900 mb-4">Project: LLM Response Optimizer</h2>
                   <p className="text-slate-600 text-sm mb-6 leading-relaxed">
-                    Visual representation of the iterative pipeline designed for supervised fine-tuning data creation and quality optimization.
+                    The visualization below illustrates the end-to-end modular workflow designed to transform raw outputs from large language models into high-quality, fine-tuned results. This is achieved through iterative modules for issue detection and optimization. 
+                  </p>
+                  <p className="text-slate-600 text-sm mb-6 leading-relaxed">
+                    The project focuses on student article text, with a knowledge_base component that stores both general writing standards and genre-specific guidelines. Each module corresponds to a structured prompt, with inputs and outputs represented in JSON format. The entire pipeline is implemented in Python, and each output is generated via calls to a large language model API.
                   </p>
                   <ModularPipelineDiagram />
                 </div>
